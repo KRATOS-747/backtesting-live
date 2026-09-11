@@ -1,0 +1,88 @@
+# NSE & BSE Instrument Specifications
+# Master registry for indices and derivatives traded on the desk
+
+indices:
+  NIFTY:
+    exchange: "NSE"
+    segment: "NFO"
+    symbol: "NIFTY"
+    underlying_symbol: "NIFTY 50"
+    strike_interval: 50.0
+    tick_size: 0.05
+    weekly_expiry_day: "Thursday"
+    cash_settled: true
+    # Historical lot size schedule (crucial for realistic backtest sizing)
+    lot_size_schedule:
+      - effective_from: "2024-11-20"
+        lot_size: 25
+      - effective_from: "2021-07-01"
+        lot_size: 50
+      - effective_from: "2015-10-30"
+        lot_size: 75
+    active_lot_size: 25
+    default_strikes_above_below: 10
+    freeze_qty: 1800
+
+  BANKNIFTY:
+    exchange: "NSE"
+    segment: "NFO"
+    symbol: "BANKNIFTY"
+    underlying_symbol: "NIFTY BANK"
+    strike_interval: 100.0
+    tick_size: 0.05
+    weekly_expiry_day: "Wednesday"
+    cash_settled: true
+    lot_size_schedule:
+      - effective_from: "2024-11-20"
+        lot_size: 15
+      - effective_from: "2023-07-01"
+        lot_size: 15
+      - effective_from: "2020-07-01"
+        lot_size: 25
+    active_lot_size: 15
+    default_strikes_above_below: 12
+    freeze_qty: 900
+
+  FINNIFTY:
+    exchange: "NSE"
+    segment: "NFO"
+    symbol: "FINNIFTY"
+    underlying_symbol: "NIFTY FIN SERVICE"
+    strike_interval: 50.0
+    tick_size: 0.05
+    weekly_expiry_day: "Tuesday"
+    cash_settled: true
+    lot_size_schedule:
+      - effective_from: "2024-11-20"
+        lot_size: 25
+      - effective_from: "2021-01-01"
+        lot_size: 40
+    active_lot_size: 25
+    default_strikes_above_below: 8
+    freeze_qty: 1800
+
+  SENSEX:
+    exchange: "BSE"
+    segment: "BFO"
+    symbol: "SENSEX"
+    underlying_symbol: "BSE SENSEX"
+    strike_interval: 100.0
+    tick_size: 0.05
+    weekly_expiry_day: "Friday"
+    cash_settled: true
+    lot_size_schedule:
+      - effective_from: "2024-11-20"
+        lot_size: 10
+      - effective_from: "2023-05-12"
+        lot_size: 10
+    active_lot_size: 10
+    default_strikes_above_below: 10
+    freeze_qty: 1000
+
+trading_hours:
+  market_open: "09:15:00"
+  market_close: "15:30:00"
+  warmup_end: "09:20:00"
+  anchor_time: "09:25:00"
+  afternoon_cutoff: "14:45:00"
+  intraday_squareoff: "15:15:00"
