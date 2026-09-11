@@ -1,0 +1,49 @@
+# Indian Financial Markets Statutory Cost & Friction Registry
+# Source: NSE/SEBI Master Circulars & Finance Act 2024 Schedule
+
+derivatives:
+  options:
+    # Securities Transaction Tax (STT)
+    stt_sell_rate: 0.0010          # 0.10% on option premium (effective Oct 2024)
+    stt_exercise_rate: 0.00125     # 0.125% on intrinsic settlement value for ITM exercise
+    stt_buy_rate: 0.0              # Zero STT on purchase
+
+    # Exchange Turnover Charges
+    exchange_txn_rate_nse: 0.0003503  # NSE: 0.03503% of premium turnover
+    exchange_txn_rate_bse: 0.0003250  # BSE: 0.03250% of premium turnover
+
+    # Statutory Regulatory Levies
+    sebi_turnover_rate: 0.0000010      # SEBI fee: ₹10 per ₹1 Crore turnover
+    stamp_duty_buy_rate: 0.0000300     # Stamp duty: 0.003% on buy side only
+    gst_rate: 0.18                     # 18% GST on (Brokerage + Exchange Txn + SEBI)
+
+    # Desk Brokerage
+    brokerage_per_order: 20.0          # Flat ₹20 per executed order leg
+
+    # Microstructure Slippage Parameters
+    slippage_model:
+      base_spread_bps: 15.0            # 0.15% base half-spread for ATM contracts
+      illiquid_otm_spread_bps: 35.0    # 0.35% base half-spread for OTM wings
+      fast_market_multiplier: 2.0      # Multiplier during 09:15-09:20 and 15:00-15:30
+      impact_exponent: 0.5             # Square-root law of market impact: slippage ~ sqrt(Q / V)
+
+  futures:
+    stt_sell_rate: 0.0002              # 0.02% on futures sell turnover
+    exchange_txn_rate: 0.0000173       # 0.00173%
+    sebi_turnover_rate: 0.0000010
+    stamp_duty_buy_rate: 0.0000200
+    gst_rate: 0.18
+    brokerage_per_order: 20.0
+    slippage_model:
+      base_spread_bps: 1.5
+
+equity:
+  stt_delivery_rate: 0.0010            # 0.1% on buy & sell delivery
+  stt_intraday_sell_rate: 0.00025      # 0.025% on intraday sell
+  exchange_txn_rate: 0.0000297
+  sebi_turnover_rate: 0.0000010
+  stamp_duty_buy_rate: 0.0001500
+  gst_rate: 0.18
+  stcg_tax_rate: 0.20                  # 20% Short-Term Capital Gains Tax
+  default_statutory_rate: 0.0011       # 0.11% blended rate used in PCA model
+  fixed_slippage_rate: 0.0015          # 0.15% blended execution spread
